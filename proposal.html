@@ -250,7 +250,7 @@ to {
     });
   </script>
   
-    <script>
+<script>
   var hoverCount = 0;
   var clickCount = 0;
 
@@ -264,25 +264,40 @@ to {
 
   var cancelBtn1 = document.getElementById("cancelBtn");
 
-  // Hover logic (3 times)
-  cancelBtn1.addEventListener("mouseenter", function () {
-    hoverCount++;
+  function setupEvent() {
+    // Remove previous listeners (important if resizing)
+    cancelBtn1.replaceWith(cancelBtn1.cloneNode(true));
+    cancelBtn1 = document.getElementById("cancelBtn");
 
-    if (hoverCount === 3) {
-      sucessfunction();
-      hoverCount = 0; // reset
+    if (window.innerWidth < 1024) {
+      // Mobile / Tablet → Click logic
+      cancelBtn1.addEventListener("click", function () {
+        clickCount++;
+
+        if (clickCount === 3) {
+          sucessfunction();
+          clickCount = 0;
+        }
+      });
+    } else {
+      // Desktop → Hover logic
+      cancelBtn1.addEventListener("mouseenter", function () {
+        hoverCount++;
+
+        if (hoverCount === 3) {
+          sucessfunction();
+          hoverCount = 0;
+        }
+      });
     }
-  });
+  }
 
-  // Click logic (3 clicks)
-  cancelBtn1.addEventListener("click", function () {
-    clickCount++;
+  // Run on load
+  setupEvent();
 
-    if (clickCount === 3) {
-      sucessfunction();
-      clickCount = 0; // reset
-    }
-  });
+  // Re-check on resize
+  window.addEventListener("resize", setupEvent);
 </script>
+
 </body>
 </html>
