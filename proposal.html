@@ -264,10 +264,6 @@ to {
 
   var cancelBtn1 = document.getElementById("cancelBtn");
 
-  function setupEvent() {
-    // Remove previous listeners (important if resizing)
-    cancelBtn1.replaceWith(cancelBtn1.cloneNode(true));
-    cancelBtn1 = document.getElementById("cancelBtn");
 
     if (window.innerWidth < 1024) {
       // Mobile / Tablet → Click logic
@@ -290,13 +286,8 @@ to {
         }
       });
     }
-  }
 
-  // Run on load
-  setupEvent();
 
-  // Re-check on resize
-  window.addEventListener("resize", setupEvent);
 </script>
 
 </body>
