@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Will you be my Valentine?</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&display=swap" rel="stylesheet">
+<style>
+body {
+  margin: 0;
+  font-family: "EB Garamond", serif;
+}
+.outer_box {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  background-color: #f7f7f7;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  background: url('./red.jpg') no-repeat;
+  background-size: cover;
+  background-position: 100% 50%;
+}
+.inner_box {
+  width: 342px;
+  margin: 0 auto;
+}
+.inner_box1 {
+  width: 301px;
+  padding: 20px;
+  padding-bottom: 65px;
+  background-color: #fff8f8;
+  border-radius: 20px;
+  border: 1px dashed #f91e00;
+  box-shadow: 0 2px 30px rgb(0 0 0 / 16%);
+}
+h4 {
+  font-size: 20px;
+  font-weight: 600;
+  margin-top: 0;
+  margin-bottom: 20px;
+}
+h5 {
+  font-size: 18px;
+  line-height: 24px;
+  font-weight: 500;
+  margin-top: 0;
+  margin-bottom: 20px;
+}
+p {
+  font-size: 16px;
+  line-height: 22px;
+  font-weight: 400;
+  margin-top: 0;
+  margin-bottom: 12px;
+}
+p:nth-child(3) {
+  margin-bottom: 18px;
+}
+.btn {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  gap: 10px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  align-items: center;
+  justify-content: center;
+}
+.btns {
+  font-family: "EB Garamond", serif;
+  font-size: 16px;
+  line-height: 22px;
+  color: #fff;
+  background-color: #f91e00;
+  padding: 8px 20px;
+  border: .5px dashed #f91e00;
+  border-radius: 20px;
+  min-width: 100px;
+  cursor: pointer;
+  margin-top: 205px;
+  box-shadow: 0 2px 10px rgb(0 0 0 / 14%);
+}
+.okay {
+  margin-left: -160px;
+}
+.cancel {
+  position: absolute;
+  transition: left 0.15s ease, top 0.15s ease;
+  margin-left: 65px;
+  color: #000000;
+  background-color: #ffffff;
+}
+.inner_box2 {
+  padding: 80px 20px 15px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+h6 {
+  font-size: 20px;
+  line-height: 28px;
+  font-weight: 600;
+  margin-top: 0;
+  margin-bottom: 12px;
+}
+h6.red_txt {
+  font-size: 22px;
+  margin-top: 15px;
+}
+.icon1 {
+  filter: grayscale(0) hue-rotate(-21deg) saturate(9.5) contrast(0.5);
+  position: absolute;
+  top: -20px;
+  left: -20px;
+  transform: rotate(180deg);
+  width: 100px;
+}
+.icon2 {
+  filter: hue-rotate(-37deg) saturate(40.5) contrast(0.6);
+  width: 70px;
+  margin-top: 5px;
+}
+.red_txt {
+  color: #f91e00;
+}
+.successful_msgT {
+  visibility: hidden;
+  min-width: 80px;
+  position: fixed;
+  z-index: 999;
+  top: 30px;
+  right: 30px;
+  background-color: #f91e00;
+  padding: 15px 30px;
+  padding-top: 12px;
+  border-radius: 2px;
+}
+.successful_msgT p {
+  font-family: "EB Garamond", serif;
+  font-size: 20px;
+  line-height: 22px;
+  color: #ffffff;
+  font-weight: 500;
+  text-align: center;
+  margin-bottom: 0;
+}
+.successful_msgT.show {
+  visibility: visible;
+  -webkit-animation: fadein .5s, fadeout .5s 2.6s;
+  animation: fadein .5s, fadeout .5s 2.6s;
+}
+@-webkit-keyframes fadein {
+from {
+  top: 0;
+  opacity: 0
+}
+to {
+  top: 30px;
+  opacity: 1
+}
+}
+@keyframes fadein {
+from {
+  top: 0;
+  opacity: 0
+}
+to {
+  top: 30px;
+  opacity: 1
+}
+}
+@-webkit-keyframes fadeout {
+from {
+  top: 30px;
+  opacity: 1
+}
+to {
+  top: 0;
+  opacity: 0
+}
+}
+@keyframes fadeout {
+from {
+  top: 30px;
+  opacity: 1
+}
+to {
+  top: 0;
+  opacity: 0
+}
+}
+</style>
+</head>
+<body>
+  <div class="outer_box">
+    <div class="inner_box">
+      <div class="inner_box1">
+        <h4>Hey <span class="red_txt">Bebu</span>,</h4>
+        <p>I didn’t expect someone to come into my life and change it in the most beautiful way, but you did.</p>
+        <p>You turned ordinary moments into magic and made my world a little softer and a lot happier.</p>
+        <h5>Will you be my Valentine?</h5>
+        <div class="btn">
+          <button class="btns okay" id="okayBtn">Yes</button>
+          <button class="btns cancel" id="cancelBtn">No</button>
+        </div>
+      </div>
+      <div class="inner_box1 inner_box2" style="display: none;">
+        <h6>I’m so happy you said yes.</h6>
+        <p>I promise to make this <span class="red_txt">Valentine’s Day</span> as special as you are to me.</p>
+        <h6 class="red_txt">Happy Valentine's Day</h6>
+        <img src="icon-1.svg" class="icon1">
+        <img src="icon-2.svg" class="icon2">
+      </div>
+    </div>
+  </div>
+  <div id="show_sucessToast" class="successful_msgT">
+    <p>Just Say Yes ☺️!</p>
+  </div>
+
+  <script>
+    const cancelBtn = document.getElementById("cancelBtn");
+    const container = document.querySelector(".btn");
+
+    cancelBtn.addEventListener("mouseenter", () => {
+      const maxX = container.clientWidth - cancelBtn.offsetWidth;
+      const maxY = container.clientHeight - cancelBtn.offsetHeight;
+
+      const randomX = Math.random() * maxX;
+      const randomY = Math.random() * maxY;
+
+      cancelBtn.style.left = randomX + "px";
+      cancelBtn.style.top = randomY + "px";
+      cancelBtn.style.margin = "0";
+    });
+  </script>
+
+  <script>
+    const okayBtn = document.getElementById('okayBtn');
+    const innerBox1 = document.querySelector('.inner_box1');
+    const innerBox2 = document.querySelector('.inner_box1.inner_box2');
+
+    okayBtn.addEventListener('click', () => {
+      innerBox1.style.display = 'none'; // hide the first box
+      innerBox2.style.display = 'block'; // show the second box
+    });
+  </script>
+  
+  <script>
+    var hoverCount = 0;
+
+    function sucessfunction() {
+      var x1 = document.getElementById("show_sucessToast");
+      x1.classList.add('show');
+      setTimeout(function () {
+        x1.classList.remove('show');
+      }, 3000);
+    }
+
+    var cancelBtn1 = document.getElementById("cancelBtn");
+
+    cancelBtn1.addEventListener("mouseenter", function () {
+      hoverCount++;
+
+      if (hoverCount === 3) {
+        sucessfunction();
+        hoverCount = 0; // reset if you want it to work again
+      }
+    });
+  </script>
+</body>
+</html>
