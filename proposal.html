@@ -249,46 +249,27 @@ to {
       innerBox2.style.display = 'block'; // show the second box
     });
   </script>
-  
 <script>
-  var hoverCount = 0;
-  var clickCount = 0;
+    var hoverCount = 0;
 
-  function sucessfunction() {
-    var x1 = document.getElementById("show_sucessToast");
-    x1.classList.add('show');
-    setTimeout(function () {
-      x1.classList.remove('show');
-    }, 3000);
-  }
-
-  var cancelBtn1 = document.getElementById("cancelBtn");
-
-
-    if (window.innerWidth < 1024) {
-      // Mobile / Tablet → Click logic
-      cancelBtn1.addEventListener("click", function () {
-        clickCount++;
-
-        if (clickCount === 3) {
-          sucessfunction();
-          clickCount = 0;
-        }
-      });
-    } else {
-      // Desktop → Hover logic
-      cancelBtn1.addEventListener("mouseenter", function () {
-        hoverCount++;
-
-        if (hoverCount === 3) {
-          sucessfunction();
-          hoverCount = 0;
-        }
-      });
+    function sucessfunction() {
+      var x1 = document.getElementById("show_sucessToast");
+      x1.classList.add('show');
+      setTimeout(function () {
+        x1.classList.remove('show');
+      }, 3000);
     }
 
+    var cancelBtn1 = document.getElementById("cancelBtn");
 
-</script>
+    cancelBtn1.addEventListener("mouseenter", function () {
+      hoverCount++;
 
+      if (hoverCount === 3) {
+        sucessfunction();
+        hoverCount = 0; // reset if you want it to work again
+      }
+    });
+  </script>
 </body>
 </html>
