@@ -222,7 +222,7 @@ to {
     <p>Just Say Yes ☺️!</p>
   </div>
 
-  <script>
+  <!-- <script>
     const cancelBtn = document.getElementById("cancelBtn");
     const container = document.querySelector(".btn");
 
@@ -237,7 +237,7 @@ to {
       cancelBtn.style.top = randomY + "px";
       cancelBtn.style.margin = "0";
     });
-  </script>
+  </script> -->
 
   <script>
     const okayBtn = document.getElementById('okayBtn');
@@ -250,26 +250,59 @@ to {
     });
   </script>
 <script>
-    var hoverCount = 0;
+  var hoverCount = 0;
+  var clickCount = 0;
 
-    function sucessfunction() {
-      var x1 = document.getElementById("show_sucessToast");
-      x1.classList.add('show');
-      setTimeout(function () {
-        x1.classList.remove('show');
-      }, 3000);
-    }
+  const cancelBtn = document.getElementById("cancelBtn");
+  const container = document.querySelector(".btn");
 
-    var cancelBtn1 = document.getElementById("cancelBtn");
+  function sucessfunction() {
+    var x1 = document.getElementById("show_sucessToast");
+    x1.classList.add("show");
 
-    cancelBtn1.addEventListener("mouseenter", function () {
+    setTimeout(function () {
+      x1.classList.remove("show");
+    }, 3000);
+  }
+
+  function moveButtonRandomly() {
+    const maxX = container.clientWidth - cancelBtn.offsetWidth;
+    const maxY = container.clientHeight - cancelBtn.offsetHeight;
+
+    const randomX = Math.random() * maxX;
+    const randomY = Math.random() * maxY;
+
+    cancelBtn.style.position = "absolute";
+    cancelBtn.style.left = randomX + "px";
+    cancelBtn.style.top = randomY + "px";
+    cancelBtn.style.margin = "0";
+  }
+
+  if (window.innerWidth < 1024) {
+    // Mobile / Tablet → Click logic
+    cancelBtn.addEventListener("click", function () {
+      clickCount++;
+
+      moveButtonRandomly();
+
+      if (clickCount === 3) {
+        sucessfunction();
+        clickCount = 0;
+      }
+    });
+  } else {
+    // Desktop → Hover logic
+    cancelBtn.addEventListener("mouseenter", function () {
       hoverCount++;
+
+      moveButtonRandomly();
 
       if (hoverCount === 3) {
         sucessfunction();
-        hoverCount = 0; // reset if you want it to work again
+        hoverCount = 0;
       }
     });
-  </script>
+  }
+</script>
 </body>
 </html>
